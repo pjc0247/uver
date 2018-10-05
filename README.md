@@ -3,6 +3,7 @@ Code transformation for Unity/C#
 
 Monkey Patching
 ----
+The example below demonstrates how to __Monkey Patch__ existing method.
 ```cs
 class CrazyMathPatch : Interceptor {
     public override bool IsTransformable(MethodData method)
