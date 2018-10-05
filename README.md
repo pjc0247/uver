@@ -1,10 +1,24 @@
 # uver
 Code transformation for Unity/C#
 
+Monkey Patching
+----
+```cs
+class CrazyMathPatch : Interceptor {
+    public override bool IsTransformable(MethodData method)
+        => Match(method, () => Mathf.Max(0, 0));
+
+    public float Max(float a, float b) {
+        return Environment.TickCount % 2 == 1 ?
+            a : b;
+    }
+}
+```
+
 Aspect Oriented Programming
 ----
 ```cs
-class ProfileSampleAspect : AspectBase {
+class ProfileSampleAspect : Aspect {
   public override string attributeName => "TestAttribute";
   
   public override object Call(params object[] args) {
