@@ -7,7 +7,7 @@ The example below demonstrates how to __Monkey Patch__ existing method.
 ```cs
 class CrazyMathPatch : Interceptor {
     public override bool IsTransformable(MethodData method)
-        // parameters(0, 0) is not important because they never be called.
+        // parameters(0, 0) is not important because they never be evaluated.
         => Match(method, () => Mathf.Max(0, 0)); 
 
     public float Max(float a, float b) {
